@@ -17,11 +17,13 @@ package cis365week2.baristamatic;
         name = nameIn;
     }
 
-    public String getDescription() {
-        return name;
-    }
 
-    public int cost() {
+	public String getDescription() {
+		return name;
+	}
+
+
+    public int cost() { //is this needed?
         return 0;
     }
 
