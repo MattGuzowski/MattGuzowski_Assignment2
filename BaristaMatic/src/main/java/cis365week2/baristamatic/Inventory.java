@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * code modified from https://github.com/stuff-and-exercises/barista-matic
+ * modified to practice unit tests
  */
 package cis365week2.baristamatic;
 
@@ -10,17 +9,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-// This class holds the prototypes of the ingredients and the current quantity of each of them
+// This class holds the the ingredients and the current quantity of each of them
 public class Inventory {
 
-    private Map<String, Integer> quantities;
-    private Map<String, Ingredient> ingredients;
+    public Map<String, Integer> quantities; 
+    public Map<String, Ingredient> ingredients;
 
     public Inventory() {
-        //ingredients = new HashMap<String, Ingredient>();
         ingredients = new TreeMap<String, Ingredient>();
         quantities = new TreeMap<String, Integer>();
-        loadIngredient(new DecafCoffee());
+        loadIngredient(new DecafCoffee()); //default loads 10
         loadIngredient(new Sugar());
         loadIngredient(new Cream());
         loadIngredient(new Cocoa());
@@ -36,11 +34,6 @@ public class Inventory {
         for (String key : ingredients.keySet()) {
             System.out.println(key + "," + quantities.get(key));
         }
-//		Iterator<String> it1 = quantities.keySet().iterator();
-//		Iterator<Integer> it2 = quantities.values().iterator();
-//		while (it1.hasNext() && it2.hasNext()) {
-//			System.out.println(it1.next() + "," + it2.next());
-//		}
     }
 
     public void restock() {

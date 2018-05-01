@@ -1,14 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * code modified from https://github.com/stuff-and-exercises/barista-matic
+ * modified to practice unit tests
  */
 package cis365week2.baristamatic;
 
-/**
- *
- * @author Matt Guzowski
- */
 
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +13,7 @@ import java.util.TreeMap;
 // Class to store the different available recipes
 public class Menu {
 	
-	private Map<String, Recipe> recipes;
+	public Map<String, Recipe> recipes; 
 
 	public Menu(Inventory inventory) {
 		recipes = new TreeMap<String, Recipe>();

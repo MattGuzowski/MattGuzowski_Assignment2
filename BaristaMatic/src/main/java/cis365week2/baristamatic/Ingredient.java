@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * code modified from https://github.com/stuff-and-exercises/barista-matic
+ * modified to practice unit tests
  */
 package cis365week2.baristamatic;
 
@@ -10,27 +9,27 @@ public abstract class Ingredient extends Drink {
 	private Drink drink;
 	private int price;
 
-	public Ingredient(String name, int price) {
+	public Ingredient(String name, int priceIn) {
 		super(name);
-		this.price = price;
+		price = priceIn;
 	}
 
 	/**
-	 * Returns the name of the drink
+	 * name of the drink
  	 */
 	public String getDescription() {
 		return drink.getDescription();
 	}
 
 	/**
-	 * Returns the name of the ingredient
+	 * name of the ingredient
  	 */
 	public String getName() {
 		return super.getDescription();
 	}
 
 	/**
-	 * Add this ingredient to a drink
+	 * Add ingredient to a drink
  	 */
 	public Drink addTo(Drink drink) {
 		this.drink = drink;
