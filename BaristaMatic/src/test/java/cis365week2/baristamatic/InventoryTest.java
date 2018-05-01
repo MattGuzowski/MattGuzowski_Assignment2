@@ -42,7 +42,7 @@ public class InventoryTest {
      */
     @Test
     public void testDisplay() {
-        System.out.println("Testing Inventory display");
+        System.out.println("Testing display in Inventory.");
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         inventory.display();
@@ -54,7 +54,7 @@ public class InventoryTest {
      */
     @Test
     public void testRestock() {
-        System.out.println("Testing restock method in Inventory");
+        System.out.println("Testing restock in Inventory");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         menu.makeDrink(4);
@@ -84,7 +84,7 @@ public class InventoryTest {
      */
     @Test
     public void testEnoughOf() {
-        System.out.println("Testing enoughOf method in Inventory.");
+        System.out.println("Testing enoughOf in Inventory.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         Ingredient ingredient = inventory.get("Coffee");
@@ -98,7 +98,7 @@ public class InventoryTest {
      */
     @Test
     public void testGet() {
-        System.out.println("testing get method in Inventory");
+        System.out.println("testing get in Inventory.");
         Ingredient ingredient = inventory.get("Coffee");
         String result = ingredient.getName();
         String expResult = "Coffee";
@@ -150,7 +150,7 @@ public class InventoryTest {
      */
     @Test
     public void testGetInventoryIngredientCost() {
-        System.out.println("Testing Ingredient getCost");
+        System.out.println("Testing getCost in Inventory.");
 
         String ingredient = "Coffee";
         int result = inventory.getCost(ingredient);

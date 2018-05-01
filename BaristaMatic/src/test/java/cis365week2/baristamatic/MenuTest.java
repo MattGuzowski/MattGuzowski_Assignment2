@@ -43,7 +43,7 @@ public class MenuTest {
      */
     @Test
     public void testAddRecipe() {
-        System.out.println("Testing addRecipe method Menu.");
+        System.out.println("Testing addRecipe in Menu.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         assertTrue(menu.recipes.containsKey("Coffee"));
@@ -54,7 +54,7 @@ public class MenuTest {
      */
     @Test
     public void testDisplay() {
-        System.out.println("display");
+        System.out.println("Testing display in Menu.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         PrintStream out = mock(PrintStream.class);
@@ -68,7 +68,7 @@ public class MenuTest {
      */
     @Test
     public void testMakeDrink() {
-        System.out.println("makeDrink");
+        System.out.println("Testing makeDrink in Menu.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         menu.makeDrink(4);

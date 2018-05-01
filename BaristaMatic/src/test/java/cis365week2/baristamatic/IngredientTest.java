@@ -46,7 +46,7 @@ public class IngredientTest {
      */
     @Test
     public void testGetName() {
-        System.out.println("Testing getName method in Ingredient");
+        System.out.println("Testing getName in Ingredient.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         String result = inventory.ingredients.get("Coffee").getName();
@@ -60,7 +60,7 @@ public class IngredientTest {
      */
     @Test
     public void testAddTo() {
-        System.out.println("Testing addTo method in Ingredient.");
+        System.out.println("Testing addTo in Ingredient.");
         Drink Coffee = new Drink("Coffee");
         Coffee = (new Coffee()).addTo(Coffee);
         assertTrue(Coffee.getDescription().equals(("Coffee"))
@@ -72,7 +72,7 @@ public class IngredientTest {
      */
     @Test
     public void testCost() {
-        System.out.println("Testing cost method in Ingredient.");
+        System.out.println("Testing cost in Ingredient.");
         Drink Cream = new Drink("Cream");
         Cream = (new Cream()).addTo(Cream);
         assertTrue(Cream.cost() == 25);
