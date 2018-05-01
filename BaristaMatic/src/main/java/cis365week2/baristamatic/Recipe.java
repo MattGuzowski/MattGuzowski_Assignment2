@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-// Class that describes different drinks that can be made.
-// It has a map with the ingredients, a name and an inventory.
 public abstract class Recipe {
 
     public Map<String, Integer> recipe;
@@ -45,7 +43,6 @@ public abstract class Recipe {
         System.out.println("Out of Stock: " + name);
     }
 
-    // Returns the drink specified in the recipe or null if there are no enough ingredients in the inventory
     public Drink makeDrink() {
         Drink drink;
         if (isInStock()) {
@@ -63,7 +60,6 @@ public abstract class Recipe {
         }
     }
 
-    // Check if the required ingredients are available to make the drink
     public boolean isInStock() {
         for (Entry<String, Integer> ingredient : recipe.entrySet()) {
             if (!inventory.enoughOf(ingredient.getKey(), ingredient.getValue())) {
@@ -73,7 +69,6 @@ public abstract class Recipe {
         return true;
     }
 
-    // Computes the cost of the drink specified by the recipe
     public int cost() {
         int cost = 0;
         for (Entry<String, Integer> ingredient : recipe.entrySet()) {

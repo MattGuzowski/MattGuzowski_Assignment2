@@ -9,10 +9,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-// This class holds the the ingredients and the current quantity of each of them
 public class Inventory {
 
-    public Map<String, Integer> quantities; 
+    public Map<String, Integer> quantities;
     public Map<String, Ingredient> ingredients;
 
     public Inventory() {
@@ -42,17 +41,15 @@ public class Inventory {
         }
     }
 
-    // We can add more ingredients once the inventory has been created
-   	public void loadIngredient(Ingredient ingredient) {
-		if (ingredients.containsKey(ingredient.getName())) {
-			throw new RuntimeException();
-		}
-		else {
-			ingredients.put(ingredient.getName(), ingredient);
-			quantities.put(ingredient.getName(), 10);
-		}
-	}
-    // Checks if there is the specified amount of ingredients in the inventory
+    public void loadIngredient(Ingredient ingredient) {
+        if (ingredients.containsKey(ingredient.getName())) {
+            throw new RuntimeException();
+        } else {
+            ingredients.put(ingredient.getName(), ingredient);
+            quantities.put(ingredient.getName(), 10);
+        }
+    }
+
     public boolean enoughOf(String ingredient, int qty) {
         if (ingredients.containsKey(ingredient)) {
             if (quantities.get(ingredient) >= qty) {
@@ -65,7 +62,6 @@ public class Inventory {
         }
     }
 
-    // Returns the specified ingredient and decreases its quantity in the inventory
     public Ingredient get(String ingredient) {
         if (enoughOf(ingredient, 1)) {
             quantities.put(ingredient, quantities.get(ingredient) - 1);
@@ -75,7 +71,6 @@ public class Inventory {
         }
     }
 
-    // Returns the cost of an ingredient in cents ($1.00 = 100)
     public int getCost(String ingredient) {
         if (ingredients.containsKey(ingredient)) {
             return ingredients.get(ingredient).cost();

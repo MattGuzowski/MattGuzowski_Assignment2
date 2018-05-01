@@ -12,10 +12,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Matchers.startsWith;
 import static org.mockito.Mockito.verify;
 
-/**
- *
- * @author Matt Guzowski
- */
 public class InventoryTest {
 
     Inventory inventory;
@@ -70,7 +66,6 @@ public class InventoryTest {
     }
 
     /**
-     * v
      * Test of loadIngredient method, of class Inventory.
      */
     @Test
@@ -202,5 +197,4 @@ public class InventoryTest {
         expResult = 100;
         assertEquals(expResult, result);
     }
-
 }
