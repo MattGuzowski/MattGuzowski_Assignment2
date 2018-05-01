@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cis365week2.baristamatic.InventoryTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.836 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.561 sec

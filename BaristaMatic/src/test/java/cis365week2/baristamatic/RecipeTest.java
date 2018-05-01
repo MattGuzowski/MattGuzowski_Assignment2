@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package cis365week2.baristamatic;
 
 import java.io.PrintStream;
@@ -22,22 +18,22 @@ import static org.mockito.Mockito.when;
  * @author Matt Guzowski
  */
 public class RecipeTest {
-    
+
     public RecipeTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -50,9 +46,9 @@ public class RecipeTest {
         System.out.println("Testing getCost method in Recipe");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
-        double result = menu.recipes.get("CoffeeRecipe").getCost();
-        double expResult = 2.75;
-        assertEquals(result, expResult,0);
+        double result = menu.recipes.get("Cappuccino").getCost();
+        double expResult = 2.90;
+        assertEquals(result, expResult, 0);
     }
 
     /**
@@ -63,12 +59,23 @@ public class RecipeTest {
         System.out.println("Testing addIngredient method in Recipe");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
-        Recipe mockRecipe = mock(Recipe.class);
-        Drink mockDrink = mock(Drink.class);
-        
-        when(mockDrink.getDescription()).thenReturn("Drink");
-        assertTrue(mockDrink.getDescription().equals("Drink"));
-        
+
+        class myNewCoffee extends Recipe {
+
+            public myNewCoffee(Inventory inventory) {
+                super("myNewCoffee", inventory);
+            }
+
+            @Override
+            public void setRecipe() {
+                addIngredient("Coffee", 4); //should add 3.00 to cost
+                addIngredient("Sugar", 2); // should add .50 to cost
+            }
+        }
+        menu.addRecipe(new myNewCoffee(inventory));
+        double result = menu.recipes.get("myNewCoffee").getCost();
+        double expResult = 3.50;
+        assertEquals(result, expResult, 0);
     }
 
     /**
@@ -78,8 +85,24 @@ public class RecipeTest {
     public void testSetRecipe() {
         System.out.println("testing setRecipe method in Recipe.");
         Inventory inventory = new Inventory();
-        Menu menu = new Menu(inventory);q
+        Menu menu = new Menu(inventory);
 
+        class myNewCoffee extends Recipe {
+
+            public myNewCoffee(Inventory inventory) {
+                super("myNewCoffee", inventory);
+            }
+
+            @Override
+            public void setRecipe() {
+                addIngredient("Coffee", 4);
+                addIngredient("Sugar", 2);
+            }
+        }
+        menu.addRecipe(new myNewCoffee(inventory));
+        String result = menu.recipes.get("myNewCoffee").name;
+        String expResult = "myNewCoffee";
+        assertEquals(result, expResult);
     }
 
     /**
@@ -87,7 +110,17 @@ public class RecipeTest {
      */
     @Test
     public void testDispenseCoffee() {
-        System.out.println("dispenseCoffee");
+        System.out.println("Testing dispenseCoffee in Recipe");
+        Inventory inventory = new Inventory();
+        Menu menu = new Menu(inventory);
+
+        menu.makeDrink(2);
+
+        PrintStream out = mock(PrintStream.class
+        );
+        System.setOut(out);
+        menu.makeDrink(4);
+        verify(out).println(startsWith("Dispensing:"));
 
     }
 
@@ -99,11 +132,11 @@ public class RecipeTest {
         System.out.println("Testing outOfStock method in Recipe.");
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
-        
+
         menu.makeDrink(4);
         menu.makeDrink(4);
         menu.makeDrink(4); //run down inventory
-        
+
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         menu.makeDrink(4);
@@ -119,7 +152,6 @@ public class RecipeTest {
         Inventory inventory = new Inventory();
         Menu menu = new Menu(inventory);
         menu.makeDrink(4);
-        //int result = inventory.quantities.get("Coffee");
         int result = inventory.quantities.get("Coffee");
         int expResult = 7;
         assertEquals(result, expResult);
@@ -131,8 +163,17 @@ public class RecipeTest {
      */
     @Test
     public void testIsInStock() {
-        System.out.println("isInStock");
-    
+        System.out.println("Testing isInStock method in Recipe");
+        Inventory inventory = new Inventory();
+        Menu menu = new Menu(inventory);
+        boolean result = menu.recipes.get("Caffe Americano").isInStock();
+        assertTrue(result);
+        menu.makeDrink(0);
+        menu.makeDrink(0);
+        menu.makeDrink(0);
+        boolean result2 = menu.recipes.get("Caffe Americano").isInStock();
+        assertFalse(result2);
+
     }
 
     /**
@@ -140,9 +181,11 @@ public class RecipeTest {
      */
     @Test
     public void testCost() {
-        System.out.println("cost");
-    
+        System.out.println("Testing cost in Recipe");
+        Inventory inventory = new Inventory();
+        Menu menu = new Menu(inventory);
+        double result = menu.recipes.get("Caffe Mocha").cost();
+        double expResult = 335;
+        assertEquals(result, expResult, 0);
     }
-
-    
 }

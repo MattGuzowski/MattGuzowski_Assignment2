@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author Matt Guzowski
  */
 public class IngredientTest {
-    
+
     public IngredientTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,13 +43,10 @@ public class IngredientTest {
     @Test
     public void testGetDescription() {
         System.out.println("Testing getDescription in Ingredient");
-        Inventory inventory = new Inventory();
-        Menu menu = new Menu(inventory);
-        String result = inventory.ingredients.get("Coffee").getName();
-        System.out.println(result);
-        String expResult = "Coffee";
-        assertEquals(result, expResult);
-    
+        Drink Coffee = new Drink("Coffee");
+        Coffee = (new Coffee()).addTo(Coffee);
+        assertTrue(Coffee.getDescription().equals(("Coffee")));
+
     }
 
     /**
@@ -75,7 +72,7 @@ public class IngredientTest {
         Drink Coffee = new Drink("Coffee");
         Coffee = (new Coffee()).addTo(Coffee);
         assertTrue(Coffee.getDescription().equals(("Coffee"))
-            && Coffee.cost() == 75);
+                && Coffee.cost() == 75);
     }
 
     /**
@@ -88,5 +85,4 @@ public class IngredientTest {
         Cream = (new Cream()).addTo(Cream);
         assertTrue(Cream.cost() == 25);
     }
-    
 }
